@@ -1,0 +1,27 @@
+import React, { Component, PureComponent } from 'react';
+import classNames from 'classnames/bind';
+import ContentWrapper from "../ContentWrapper/ContentWrapper.jsx"
+import NameSite from '../NameSite/NameSite.jsx'
+
+import styles from './header.scss';
+
+
+const cx = classNames.bind(styles);
+
+class Header extends PureComponent {
+  constructor() {
+    super();
+  }
+  render() {
+    return(
+      <div className={cx('tab')}>
+        <ContentWrapper>
+        <NameSite />
+        <div className={cx('description-find')}>FIND YOUR MOVIE</div>
+        </ContentWrapper>
+      </div>
+    )
+  }
+}
+
+export default Header;
