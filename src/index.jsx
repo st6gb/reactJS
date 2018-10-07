@@ -2,9 +2,15 @@ import './main.scss';
 import React, { Component, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/header/Header.jsx';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
+function lala(state=[], action){
+  return state
+}
 
-class Ololo extends Component {
+const store = createStore(lala)
+class App extends Component {
   constructor() {
     super();
   }
@@ -16,4 +22,8 @@ class Ololo extends Component {
     );
   }
 }
-ReactDOM.render(<Ololo />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, 
+  document.getElementById('root'));
