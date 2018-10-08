@@ -1,0 +1,14 @@
+.content_film{
+    display: inline-block;
+    width: 200px;
+    margin: 20px;
+
+    & .poster{
+        width: 200px;
+    }
+    & .date{
+        border: 1px solid black;
+        float: right;
+        padding: 2px;
+    }
+}
