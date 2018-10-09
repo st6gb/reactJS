@@ -2,6 +2,7 @@ import './main.scss';
 import React, { Component, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/header/Header.jsx';
+import Footer from './components/footer/Footer.jsx';
 import PosterFilm from './components/PosterFilm/PosterFilm.jsx'
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -41,6 +42,7 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <PosterFilm {...data} />
+        <Footer />
       </React.Fragment>
     );
   }
