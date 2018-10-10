@@ -1,6 +1,6 @@
 import React, { Component, PureComponent } from 'react';
 import classNames from 'classnames/bind';
-
+import PropTypes from "prop-types";
 import styles from './PosterFilm.scss';
 
 const cx = classNames.bind(styles);
@@ -10,14 +10,23 @@ class PosterFilm extends PureComponent{
         super();
     }
     render(){
+        const { data } = this.props;
+        console.log(data);
         return(
-        <div className={cx('content_film')}>
-            <img src={this.props.poster_path} className={cx('poster')}/>
-            <div>{this.props.title}<span className={cx('date')}>{this.props.release_date.slice(0,4)}</span></div>
-            <div>{this.props.genres.join(" & ")}</div>
-        </div>
+            data.map((film) => {
+                return(<div className={cx('content_film')}>
+                            <img src={film.poster_path} className={cx('poster')}/>
+                            <div className={cx('discription_film')}>
+                                <div>{film.title}<span className={cx('date')}>{film.release_date.slice(0,4)}</span></div>
+                                <div>{film.genres.join(" & ")}</div>
+                            </div>
+                        </div>
+                )
+            })
         )
     }
 }
-
+PosterFilm.propTypes = {
+    data: PropTypes.array,
+}
 export default PosterFilm;

@@ -12,7 +12,7 @@ class ContentWrapper extends Component {
   render() {
     const { children } = this.props
     return(
-      <div className={cx('ContentWrapper')}>
+      <div className={cx('contentWrapper')}>
       { children }
       </div>
     )

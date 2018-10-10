@@ -15,7 +15,7 @@ class Header extends PureComponent {
   }
   render() {
     return(
-      <div className={cx('tab')}>
+      <div className={cx('header')}>
         <ContentWrapper>
         <NameSite />
         <div className={cx('description-find')}>FIND YOUR MOVIE</div>

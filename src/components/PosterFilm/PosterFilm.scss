@@ -1,7 +1,7 @@
 .content_film{
-    display: inline-block;
     width: 200px;
     margin: 20px;
+    height: 400px;
 
     & .poster{
         width: 200px;
@@ -10,5 +10,8 @@
         border: 1px solid black;
         float: right;
         padding: 2px;
+    }
+    & .discription_film{
+        display: block;
     }
 }
