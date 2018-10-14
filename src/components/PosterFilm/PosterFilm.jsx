@@ -14,7 +14,7 @@ class PosterFilm extends PureComponent{
         console.log(data);
         return(
             data.map((film) => {
-                return(<div className={cx('content_film')}>
+                return(<div className={cx('content_film')} key={film.id}>
                             <img src={film.poster_path} className={cx('poster')}/>
                             <div className={cx('discription_film')}>
                                 <div>{film.title}<span className={cx('date')}>{film.release_date.slice(0,4)}</span></div>

@@ -3,6 +3,7 @@ import React, { Component, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/header/Header.jsx';
 import Footer from './components/footer/Footer.jsx';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary.jsx';
 import PosterFilm from './components/PosterFilm/PosterFilm.jsx'
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -24,16 +25,15 @@ class App extends Component {
     super();
   }
   render() {
-    console.log(data);
     return (
-      <React.Fragment>
+      <ErrorBoundary>
         <Header />
         <PanelSorting />
-        <div className="contentWrapper">
+        <div className="contentWrapper flex-box-wrapper">
           <PosterFilm data={data} />
         </div>
         <Footer />
-      </React.Fragment>
+      </ErrorBoundary>
     );
   }
 }
