@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Header from './components/header/Header.jsx';
 import Footer from './components/footer/Footer.jsx';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary.jsx';
-import PosterFilm from './components/PosterFilm/PosterFilm.jsx'
+import PosterFilmWrapper from './components/PosterFilmWrapper/PosterFilmWrapper.jsx'
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import PanelSorting from './components/PanelSorting/PanelSorting.jsx';
@@ -30,7 +30,7 @@ class App extends Component {
         <Header />
         <PanelSorting />
         <div className="contentWrapper flex-box-wrapper">
-          <PosterFilm data={data} />
+          <PosterFilmWrapper data={data} />
         </div>
         <Footer />
       </ErrorBoundary>
