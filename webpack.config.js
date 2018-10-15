@@ -21,13 +21,24 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: [
-            process.env.NODE_ENV !== 'production'
-                ? 'style-loader'
-             :MiniCssExtractPlugin.loader,
-                'css-loader',
-                'sass-loader'
+        use: 
+        process.env.NODE_ENV !== 'production' ? [{
+          loader: "style-loader"
+      }, {
+          loader: "css-loader", options: {
+            modules: true,
+            localIdentName: '[local]--[hash:base64:5]'
+          }
+      }, {
+          loader: "sass-loader", options: {
+            modules: true,
+            localIdentName: '[local]--[hash:base64:5]'
+          }
+      }
         ]
+        : [ MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader']
       },
       {
         test: /\.(png|jpg|gif)$/,
