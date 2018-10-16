@@ -17,9 +17,9 @@ class Header extends PureComponent {
     return(
       <div className={cx('header')}>
         <ContentWrapper>
-        <NameSite />
-        <div className={cx('description-find')}>FIND YOUR MOVIE</div>
-        <Search />
+          <NameSite />
+          <div className={cx('description-find')}>FIND YOUR MOVIE</div>
+          <Search />
         </ContentWrapper>
       </div>
     )

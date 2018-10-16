@@ -2,8 +2,12 @@
 
 exports[`Link changes the class when hovered 1`] = `
 <div
-  className="content"
+  className="footer"
 >
-  nextflixroulette
+  <div
+    className="content"
+  >
+    nextflixroulette
+  </div>
 </div>
 `;
