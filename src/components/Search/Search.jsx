@@ -6,7 +6,7 @@ import styles from './Search.scss';
 
 const cx = classNames.bind(styles);
 
-class Search extends Component{
+export class Search extends Component{
     constructor(){
         super();
     }
