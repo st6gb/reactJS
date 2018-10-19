@@ -8,18 +8,11 @@ import PosterFilmWrapper from './components/PosterFilmWrapper/PosterFilmWrapper.
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import PanelSorting from './components/PanelSorting/PanelSorting.jsx';
-import { data } from '../data';
+import combineReducer from './reducers/index';
 
-function reducer(state=["genre"], action){
-  if(action.type === "SET_ACTIVE"){
-    return [
-       action.active
-      ]
-  }
-  return state
-}
 
-const store = createStore(reducer)
+
+const store = createStore(combineReducer)
 class App extends Component {
   constructor() {
     super();
@@ -29,9 +22,7 @@ class App extends Component {
       <ErrorBoundary>
         <Header />
         <PanelSorting />
-        <div className="contentWrapper flex-box-wrapper">
-          <PosterFilmWrapper data={data} />
-        </div>
+        <PosterFilmWrapper />
         <Footer />
       </ErrorBoundary>
     );

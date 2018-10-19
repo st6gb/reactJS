@@ -24,7 +24,7 @@ export class Search extends Component{
                     <div className={cx('text')}>SEARCH BY</div>
                     <div className={cx('tab_searching', this.isActiveTabTitle())} onClick = {()=>this.props.onClick("title")}>TITLE</div>
                     <div className={cx('tab_searching', this.isActiveTabGenre())} onClick = {()=>this.props.onClick("genre")}>GENRE</div>
-                    <button>search</button>
+                    <button onClick = {()=>this.props.getData()}>search</button>
                 </div>
                 
             </>
@@ -32,11 +32,15 @@ export class Search extends Component{
     }
 }
 const mapStateToProps = state => ({
-    activeTab: state
+    activeTab: state.active
 })
 const mapDispatchToProps = dispatch =>({
     onClick: title =>{
         dispatch({type: "SET_ACTIVE", active: title})
+    },
+    getData : () =>{
+        dispatch({type: "GET_10_MOVIES", data: {}})
     }
+
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
