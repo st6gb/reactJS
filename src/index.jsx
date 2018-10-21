@@ -6,13 +6,11 @@ import Footer from './components/footer/Footer.jsx';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary.jsx';
 import PosterFilmWrapper from './components/PosterFilmWrapper/PosterFilmWrapper.jsx'
 import { Provider } from "react-redux";
-import { createStore } from "redux";
 import PanelSorting from './components/PanelSorting/PanelSorting.jsx';
-import combineReducer from './reducers/index';
+import configureStore from './store/configureStore';
 
+const store = configureStore();
 
-
-const store = createStore(combineReducer)
 class App extends Component {
   constructor() {
     super();

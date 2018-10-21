@@ -1,0 +1,25 @@
+export default function getFilm (search, searchBy){
+  console.log(search, searchBy)
+  return (dispatch) => {
+    dispatch({
+      type: 'GET_FILM_REQUEST'
+    })
+    fetch(`http://react-cdp-api.herokuapp.com/movies?search=${search}&searchBy=${searchBy}&limit=20`)
+    .then((res)=>{
+      return res.json();
+    })
+    .then((res)=>{
+      return dispatch({
+        type: 'GET_FILM_REQUEST_SUCCESS',
+        payload: res.data
+      })
+    })
+    .catch(()=>{
+      return dispatch({
+        type: 'GET_FILM_REQUEST_ERORR',
+        payload: response.error,
+        error: true
+      })
+    })
+  }
+}
