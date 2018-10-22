@@ -14,21 +14,24 @@ class PanelSorting extends Component{
   }
 
   render(){
-    const { data } = this.props;
+    const { data, activeSort } = this.props;
     return(
       <div className={cx('panel')}>
           <span>{`${data.length} film found`}</span>
           <div className={cx('box-sort')}>
             <span >Sort by</span>
-            <button className={cx('button', this.props.activeSort === 'release' ? 'active' : null)} onClick={()=>{this.props.onClick('release')}}>release</button>
-            <button className={cx('button', this.props.activeSort === 'date' ? 'active' : null)} onClick={()=>{this.props.onClick('date')}}>runtime</button>
-            <button className={cx('button', this.props.activeSort === 'rating' ? 'active' : null)} onClick={()=>{this.props.onClick('rating')}}>rating</button>
+            <button className={cx('button', {active : activeSort === 'release'})} onClick={()=>{this.props.onClick('release')}}>release</button>
+            <button className={cx('button', {active : activeSort === 'date'})} onClick={()=>{this.props.onClick('date')}}>runtime</button>
+            <button className={cx('button', {active : activeSort === 'rating'})} onClick={()=>{this.props.onClick('rating')}}>rating</button>
           </div>
       </div>
     )
   }
 }
-
+PanelSorting.propTypes = {
+  data: PropTypes.array,
+  activeSort: PropTypes.string,
+}
 const mapStateToProps = state => ({
   data: state.request,
   activeSort: state.sorting

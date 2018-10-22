@@ -1,5 +1,4 @@
 export default function getFilm (search, searchBy){
-  console.log(search, searchBy)
   return (dispatch) => {
     dispatch({
       type: 'GET_FILM_REQUEST'

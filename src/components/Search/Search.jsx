@@ -12,27 +12,23 @@ export class Search extends Component{
         super();
         this.getFilm = this.getFilms;
     }
-    isActiveTabTitle(){
-        return this.props.activeTab[0] === "title"? "tab_active" : null;
-    }
-    isActiveTabGenre(){
-        return this.props.activeTab[0] === "genres"? "tab_active" : null;
-    }
-    getFilms(){
-        
+
+    getFilms(activeTab){
         const value = document.getElementById('search').value;
-        console.log(value);
-        this.props.getData(value ,this.props.activeTab[0])
+        this.props.getData(value, activeTab);
+        document.getElementById('search').value = '';
     }
+
     render(){
+        const { activeTab } = this.props;
         return(
             <>
                 <input className={cx('input_search')} id="search"type="text" placeholder="find your film"/>
                 <div className={cx('option_search')}>
                     <div className={cx('text')}>SEARCH BY</div>
-                    <div className={cx('tab_searching', this.isActiveTabTitle())} onClick = {()=>this.props.onClick("title")}>TITLE</div>
-                    <div className={cx('tab_searching', this.isActiveTabGenre())} onClick = {()=>this.props.onClick("genres")}>GENRE</div>
-                    <button className={cx('button')} onClick = {()=>this.getFilm()}>search</button>
+                    <div className={cx('tab_searching', { tab_active: activeTab === 'title' })} onClick = {()=>this.props.onClick("title")}>TITLE</div>
+                    <div className={cx('tab_searching', { tab_active: activeTab === 'genres' })} onClick = {()=>this.props.onClick("genres")}>GENRE</div>
+                    <button className={cx('button')} onClick = {()=>this.getFilm(activeTab)}>search</button>
                 </div>
             </>
         )
