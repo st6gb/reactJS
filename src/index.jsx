@@ -8,8 +8,9 @@ import PosterFilmWrapper from './components/PosterFilmWrapper/PosterFilmWrapper.
 import { Provider } from "react-redux";
 import PanelSorting from './components/PanelSorting/PanelSorting.jsx';
 import configureStore from './store/configureStore';
+import { PersistGate } from 'redux-persist/integration/react'
 
-const store = configureStore();
+const { persistor, store } = configureStore()
 
 class App extends Component {
   constructor() {
@@ -28,6 +29,8 @@ class App extends Component {
 }
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>, 
   document.getElementById('root'));
