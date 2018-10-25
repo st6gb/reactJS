@@ -8,7 +8,8 @@ import PosterFilmWrapper from './components/PosterFilmWrapper/PosterFilmWrapper.
 import { Provider } from "react-redux";
 import PanelSorting from './components/PanelSorting/PanelSorting.jsx';
 import configureStore from './store/configureStore';
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 const { persistor, store } = configureStore()
 
@@ -19,7 +20,10 @@ class App extends Component {
   render() {
     return (
       <ErrorBoundary>
-        <Header />
+      <Switch>
+        <Route exact path ="/" component ={Header} />
+        <Route path ="/movies/:id" component ={Footer} />
+      </Switch>
         <PanelSorting />
         <PosterFilmWrapper />
         <Footer />
@@ -28,9 +32,11 @@ class App extends Component {
   }
 }
 ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
-  </Provider>, 
+  <BrowserRouter>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  </BrowserRouter>, 
   document.getElementById('root'));

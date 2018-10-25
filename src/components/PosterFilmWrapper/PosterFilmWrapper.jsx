@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styles from './PosterFilmWrapper.scss';
 import PosterFilm from '../PosterFilm/PosterFilm.jsx';
 import { connect } from "react-redux";
-import active from '../../actions/activeTab'
+import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles);
 
@@ -38,7 +38,11 @@ class PosterFilmWrapper extends PureComponent{
            return( 
            <div className={cx('contentWrapper')}>
                 {data.map((film) => {
-                    return <PosterFilm {...film} key ={film.id}/> 
+                    return(
+                        <Link to={`/movies/${film.id}`}>
+                        <PosterFilm {...film} key ={film.id}/> 
+                        </Link>
+                    ) 
                 })}
             </div>
           )}
