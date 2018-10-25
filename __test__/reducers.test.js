@@ -17,7 +17,8 @@ describe('reducers',()=>{
   })
   it('request',()=>{
     const state = [];
-    const action = {type: "GET_FILM_REQUEST_SUCCESS", payload: {bla: 'bla'} };
-    expect(request(state, action)).toEqual([{bla: 'bla'}])
+    const action = {type: "GET_FILM_REQUEST_SUCCESS", payload: [{bla: 'bla'}] };
+    expect(request(state, action)).toEqual([{bla: 'bla'}]);
+    expect(request(state, {})).toEqual([]);
   })
 })
