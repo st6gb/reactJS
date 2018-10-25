@@ -16,7 +16,7 @@ describe('reducers',()=>{
     expect(sorting(state, {})).toEqual("date");
   })
   it('request',()=>{
-    const state = [{}];
+    const state = [];
     const action = {type: "GET_FILM_REQUEST_SUCCESS", payload: {bla: 'bla'} };
     expect(request(state, action)).toEqual([{bla: 'bla'}])
   })
