@@ -37,10 +37,10 @@ class PosterFilmWrapper extends PureComponent{
           } else {
            return( 
            <div className={cx('contentWrapper')}>
-                {data.map((film) => {
+                {data.map((film, index) => {
                     return(
-                        <Link to={{ pathname: `/movies/${film.id}` }}>
-                        <PosterFilm {...film} key ={film.id}/> 
+                        <Link to={{ pathname: `/movies/${film.id}` }} key={index}>
+                            <PosterFilm {...film} key ={film.id}/> 
                         </Link>
                     ) 
                 })}

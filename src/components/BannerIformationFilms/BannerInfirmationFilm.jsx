@@ -8,6 +8,7 @@ class BannerInformationFilm extends Component{
   }
   render(){
     console.log(this.props);
+    return null;
   }
 }
 const mapStateToProps = state => ({

@@ -14,11 +14,6 @@ import BannerInformationFilm from './components/BannerIformationFilms/BannerInfi
 
 const { persistor, store } = configureStore();
 
-const Roster = () => (
-  <Switch>
-    <Route path ="/movies/:id" component ={BannerInformationFilm} />
-  </Switch>
-)
 class App extends Component {
   constructor() {
     super();
@@ -29,9 +24,7 @@ class App extends Component {
       <ErrorBoundary>
       <Switch>
         <Route exact path ="/" component ={Header} />
-        <Route path ="/movies/">
-          <Route path ="/movies/:id" component ={BannerInformationFilm} />
-        </Route>
+        <Route path ="/movies/:id" component ={BannerInformationFilm} />
       </Switch>
         <PanelSorting />
         <PosterFilmWrapper />
@@ -41,11 +34,11 @@ class App extends Component {
   }
 }
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
         <App />
-      </PersistGate>
-    </Provider>
-  </BrowserRouter>, 
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>, 
   document.getElementById('root'));
