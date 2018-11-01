@@ -21,8 +21,8 @@ class BannerInformationFilm extends Component{
   render(){
     const { movie } = this.props
     return (
-      <div class={cx('wrapper')}>
-        <div class={cx('leftBlock')}>
+      <div className={cx('wrapper')}>
+        <div className={cx('leftBlock')}>
           <NameSite />
         <img src={movie.poster_path} className={cx('poster')}/>
         </div>

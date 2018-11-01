@@ -3,11 +3,11 @@
 }
 
 .wrapper {
-  background-image: url('../../images/space-war.png');
+  background: linear-gradient(#3333339a, #252525af), url('../../images/space-war.png');
   background-position: center;
   background-size: cover;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .leftBlock {
