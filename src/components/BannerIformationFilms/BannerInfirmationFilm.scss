@@ -1,0 +1,33 @@
+.poster {
+  height: 300px;
+}
+
+.wrapper {
+  background-image: url('../../images/space-war.png');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.leftBlock {
+  width: 30%;
+}
+
+.rightBlock {
+  width: 40%;
+  color: white;
+}
+
+.description {
+  margin-top: 60px;
+}
+
+.button {
+  background: red;
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  width: 100px;
+  height: 40px;
+}

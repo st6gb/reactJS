@@ -1,16 +1,14 @@
 import './main.scss';
 import React, { Component, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/header/Header.jsx';
-import Footer from './components/footer/Footer.jsx';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary.jsx';
-import PosterFilmWrapper from './components/PosterFilmWrapper/PosterFilmWrapper.jsx'
 import { Provider } from "react-redux";
-import PanelSorting from './components/PanelSorting/PanelSorting.jsx';
+import Main from './components/Main/Main.jsx';
 import configureStore from './store/configureStore';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import BannerInformationFilm from './components/BannerIformationFilms/BannerInfirmationFilm.jsx'
+import BannerFilm from './components/BannerFilm/BannerFilm.jsx'
+import NotFound from './components/NotFound/NotFound.jsx'
 
 const { persistor, store } = configureStore();
 
@@ -19,16 +17,13 @@ class App extends Component {
     super();
   }
   render() {
-    console.log(1)
     return (
       <ErrorBoundary>
       <Switch>
-        <Route exact path ="/" component ={Header} />
-        <Route path ="/movies/:id" component ={BannerInformationFilm} />
+        <Route exact path ="/" component ={Main} />
+        <Route path ="/movies/:id" component ={BannerFilm} />
+        <Route path ="*" component={NotFound}/>
       </Switch>
-        <PanelSorting />
-        <PosterFilmWrapper />
-        <Footer />
       </ErrorBoundary>
     );
   }

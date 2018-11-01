@@ -1,33 +1,47 @@
 import React, { Component, PureComponent } from 'react';
 import classNames from 'classnames/bind';
+import getOneMovie from '../../actions/getOneMovie';
 import { connect } from "react-redux";
+import NameSite from '../NameSite/NameSite.jsx';
+import styles from './BannerInfirmationFilm.scss'
 
+const cx = classNames.bind(styles);
 class BannerInformationFilm extends Component{
-  constructor(props){
-    super(props)
+  
+  componentDidMount() {
+    this.pathname = window.location.pathname
+    this.props.getData(this.pathname);
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.pathname = window.location.pathname
+      this.props.getData(this.pathname);
+    }
   }
   render(){
-    console.log(this.props);
-    return null;
+    const { movie } = this.props
+    return (
+      <div class={cx('wrapper')}>
+        <div class={cx('leftBlock')}>
+          <NameSite />
+        <img src={movie.poster_path} className={cx('poster')}/>
+        </div>
+        <div className={cx('rightBlock')}>
+          <a href="/"><button className={cx('button')}>SEACRH</button></a>
+          <div className={cx('description')}>{movie.overview}</div>
+          <div className={cx('releaseDate')}>{movie.release_date}</div>
+        </div>
+      </div>);
   }
 }
 const mapStateToProps = state => ({
-  data: state.request
+  movie: state.requestOneMovie
 })
 
-export default connect(mapStateToProps)(BannerInformationFilm);
+const mapDispatchToProps = dispatch =>({
+  getData: pathname =>{
+      dispatch(getOneMovie(pathname))
+  }
+})
 
-
-// const Player = (props) => {
-//   const player = PlayerAPI.get(
-//     parseInt(props.match.params.number, 10)
-//   )
-//   if (!player) {
-//     return <div>Sorry, but the player was not found</div>
-//   }
-//   return (
-//     <div>
-//       <h1>{player.name} (#{player.number})</h1>
-//       <h2>{player.position}</h2>
-//     </div>
-// )
+export default connect(mapStateToProps, mapDispatchToProps)(BannerInformationFilm);

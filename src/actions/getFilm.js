@@ -13,10 +13,10 @@ export default function getFilm (search, searchBy){
         payload: res.data
       })
     })
-    .catch(()=>{
+    .catch((res)=>{
       return dispatch({
         type: 'GET_FILM_REQUEST_ERORR',
-        payload: response.error,
+        payload: res.error,
         error: true
       })
     })

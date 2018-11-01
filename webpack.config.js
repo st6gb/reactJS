@@ -7,7 +7,8 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'src/bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -63,7 +64,6 @@ module.exports = {
   ],
   devtool: 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, ''),
     port: 8080,
     clientLogLevel: 'error',
     historyApiFallback: true
