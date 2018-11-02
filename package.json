@@ -55,6 +55,7 @@
     "jest": "^23.6.0",
     "jest-enzyme": "^7.0.0",
     "node-sass": "^4.9.3",
+    "query-string": "^6.2.0",
     "react": "^16.5.2",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.5.2",

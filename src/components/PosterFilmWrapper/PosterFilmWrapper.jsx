@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styles from './PosterFilmWrapper.scss';
 import PosterFilm from '../PosterFilm/PosterFilm.jsx';
 import { connect } from "react-redux";
+
 import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles);
@@ -51,14 +52,9 @@ class PosterFilmWrapper extends PureComponent{
 PosterFilmWrapper.propTypes = {
   data: PropTypes.array,
 }
-const mapStateToProps = state => ({
-    data: state.request,
-    sorting: state.sorting
-})
-const mapDispatchToProps = dispatch =>({
-    onClick: title =>{
-        dispatch(setActiveTab(title))
-    }
 
-})
-export default connect(mapStateToProps, mapDispatchToProps)(PosterFilmWrapper);
+const mapStateToProps = state => ({
+    data: state.request
+  })
+
+  export default connect(mapStateToProps)(PosterFilmWrapper);

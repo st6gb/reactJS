@@ -8,7 +8,6 @@ export default function getOneMovie(pathname){
       return res.json();
     })
     .then((res)=>{
-      console.log(res)
       return dispatch({
         type: 'GET_MOVIE_REQUEST_SUCCESS',
         movie: res
