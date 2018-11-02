@@ -12,8 +12,11 @@ class Main extends PureComponent {
     this.state = {}
   }
   componentDidMount() {
-    const {search, value} = qs.parse(window.location.search)
-    this.props.getData(value, search);
+    if(window.location.pathname === "/search"){
+      const {search, value} = qs.parse(window.location.search)
+      this.props.getData(value, search);
+    }
+    
   }
   componentDidUpdate(prevProps) {
     if(prevProps.location.search !== this.props.location.search){
