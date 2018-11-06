@@ -4,6 +4,7 @@ import getOneMovie from '../../actions/getOneMovie';
 import { connect } from "react-redux";
 import NameSite from '../NameSite/NameSite.jsx';
 import styles from './BannerInfirmationFilm.scss'
+import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles);
 class BannerInformationFilm extends Component{
@@ -27,7 +28,7 @@ class BannerInformationFilm extends Component{
         <img src={movie.poster_path} className={cx('poster')}/>
         </div>
         <div className={cx('rightBlock')}>
-          <a href="/"><button className={cx('button')}>SEACRH</button></a>
+          <Link to={{ pathname: '/' }}><button className={cx('button')}>SEACRH</button></Link>
           <div className={cx('description')}>{movie.overview}</div>
           <div className={cx('releaseDate')}>{movie.release_date}</div>
         </div>

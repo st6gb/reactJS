@@ -10,6 +10,7 @@ function renderHTML(html, preloadedState) {
         <html>
         <head>
             <meta charset="utf-8" />
+            
             <title>(\/)(>,..,<)(\/)</title>
             <link rel="shortcut icon" href="favicon.ico"/>
             ${process.env.NODE_ENV === 'development' ? '' : '<link href="/main.css" rel="stylesheet" type="text/css">'}
