@@ -22,7 +22,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Main} />
                 <Route path="/search" component={Main} />
-                <Route path="/movies/:id" component={BannerFilm} />
+                <Route path="/movies/:id(\d+)" component={BannerFilm} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </ErrorBoundary>
