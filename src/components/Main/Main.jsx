@@ -13,15 +13,16 @@ class Main extends PureComponent {
   }
   componentDidMount() {
     if(window.location.pathname === "/search"){
-      const {search, value} = qs.parse(window.location.search)
-      this.props.getData(value, search);
+      console.log(qs.parse(window.location.search))
+      const {search, value, sortBy, sortOrder} = qs.parse(window.location.search)
+      this.props.getData(value, search, sortBy, sortOrder);
     }
     
   }
   componentDidUpdate(prevProps) {
     if(prevProps.location.search !== this.props.location.search){
-      const {search, value} = qs.parse(window.location.search)
-      this.props.getData(value, search);
+      const {search, value, sortBy, sortOrder} = qs.parse(window.location.search)
+      this.props.getData(value, search, sortBy, sortOrder);
     }
   }
   render() {
@@ -37,11 +38,12 @@ class Main extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  data: state.request
+  data: state.request,
+  activeSort: state.sorting
 })
 const mapDispatchToProps = dispatch =>({
-  getData : (search, searchBy) =>{
-    dispatch(getFilm(search, searchBy))
+  getData : (value, search, sortBy, sortOrder) =>{
+    dispatch(getFilm(value, search, sortBy, sortOrder))
 }
 
 })

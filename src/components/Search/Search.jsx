@@ -14,7 +14,7 @@ export class Search extends Component{
     }
     handleClick() {
         const value = document.getElementById('search').value;
-        this.props.history.push(`/search?search=${this.props.activeTab}&value=${value}`)
+        this.props.history.push(`/search?sortBy=${this.props.activeSort}&sortOrder=desc&search=${this.props.activeTab}&value=${value}`)
         document.getElementById('search').value = '';
       }
     render(){
@@ -33,7 +33,8 @@ export class Search extends Component{
     }
 }
 const mapStateToProps = state => ({
-    activeTab: state.active
+    activeTab: state.active,
+    activeSort: state.sorting
 })
 const mapDispatchToProps = dispatch =>({
     onClick: title =>{

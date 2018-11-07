@@ -14,25 +14,8 @@ class PosterFilmWrapper extends PureComponent{
       super();
   }
 
-  sortingRender(data){
-      if(this.props.sorting === 'date'){
-        return data.sort((a,b)=>{
-                return a.runtime > b.runtime ? 1 : -1; 
-            })
-      } else if(this.props.sorting === 'rating'){
-        return data.sort((a,b)=>{
-            return a.vote_average < b.vote_average ? 1 : -1; 
-        }) 
-      } else if (this.props.sorting === 'release'){
-        return data.sort((a,b)=>{
-            return a.release_date.slice(0,4) > b.release_date.slice(0,4) ? 1 : -1; 
-        }) 
-      }else{
-          return data;
-      }
-  }
   render(){
-      const data = this.sortingRender(this.props.data);
+      const { data } = this.props;
           if(data.length === 0){
               return <div className={cx('contentWrapper')}>Ничего не найдено</div>
           } else {

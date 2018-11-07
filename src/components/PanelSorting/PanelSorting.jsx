@@ -21,9 +21,9 @@ class PanelSorting extends Component{
           <span>{`${data.length} film found`}</span>
           <div className={cx('box-sort')}>
             <span >Sort by</span>
-            <button className={cx('button', {active : activeSort === 'release'})} onClick={()=>{this.props.onClick('release')}}>release</button>
-            <button className={cx('button', {active : activeSort === 'date'})} onClick={()=>{this.props.onClick('date')}}>runtime</button>
-            <button className={cx('button', {active : activeSort === 'rating'})} onClick={()=>{this.props.onClick('rating')}}>rating</button>
+            <button className={cx('button', {active : activeSort === 'release_date'})} onClick={()=>{this.props.onClick('release_date')}}>release</button>
+            <button className={cx('button', {active : activeSort === 'runtime'})} onClick={()=>{this.props.onClick('runtime')}}>runtime</button>
+            <button className={cx('button', {active : activeSort === 'vote_average'})} onClick={()=>{this.props.onClick('vote_average')}}>rating</button>
           </div>
       </div>
     )

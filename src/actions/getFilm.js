@@ -1,9 +1,10 @@
-export default function getFilm (search, searchBy){
+export default function getFilm (search, searchBy, sortBy, sortOrder){
+  console.log(search, searchBy, sortBy, sortOrder)
   return (dispatch) => {
     dispatch({
       type: 'GET_FILM_REQUEST'
     })
-    fetch(`http://react-cdp-api.herokuapp.com/movies?search=${search}&searchBy=${searchBy}&limit=20`)
+    fetch(`http://react-cdp-api.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=${sortOrder}&search=${search}&searchBy=${searchBy}&limit=20`)
     .then((res)=>{
       return res.json();
     })
