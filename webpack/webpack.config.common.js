@@ -9,6 +9,7 @@ module.exports = {
   output: {
     filename: 'src/[name].js',
     path: path.resolve('./build'),
+    publicPath: '/'
   },
 
   resolve: {
