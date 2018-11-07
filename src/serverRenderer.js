@@ -2,8 +2,8 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import App from './App';
-import configureStore from '../src/store/configureStore';
-
+import configureStore from './store/configureStore';
+/*eslint-disable */
 function renderHTML(html, preloadedState) {
   return `
         <!DOCTYPE html>
@@ -11,7 +11,7 @@ function renderHTML(html, preloadedState) {
         <head>
             <meta charset="utf-8" />
             
-            <title>(\/)(>,..,<)(\/)</title>
+            <title>(\/)(>,..,<)(\/)</title> 
             <link rel="shortcut icon" href="/favicon.ico"/>
             ${process.env.NODE_ENV === 'development' ? '' : '<link href="/main.css" rel="stylesheet" type="text/css">'}
             <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -45,13 +45,13 @@ export default function serverRenderer() {
 
     const app = (
       <App
-        context={context}
+        context={context} 
         location={req.url}
         Router={StaticRouter}
         store={store}
       />
     );
-
+  /* eslint-enable */
     const htmlString = renderToString(app);
     // context.url will contain the URL to redirect to if a <Redirect> was used
     if (context.url) {

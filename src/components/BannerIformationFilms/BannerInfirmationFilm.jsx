@@ -1,48 +1,64 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import getOneMovie from '../../actions/getOneMovie';
-import { connect } from "react-redux";
-import NameSite from '../NameSite/NameSite.jsx';
-import styles from './BannerInfirmationFilm.scss'
-import { Link } from 'react-router-dom'
+import NameSite from '../NameSite/NameSite';
+import styles from './BannerInfirmationFilm.scss';
 
 const cx = classNames.bind(styles);
-class BannerInformationFilm extends Component{
-  
+class BannerInformationFilm extends Component {
   componentDidMount() {
-    this.pathname = window.location.pathname
-    this.props.getData(this.pathname);
+    this.pathname = window.location.pathname;
+    const { getData } = this.props;
+    getData(this.pathname);
   }
+
   componentDidUpdate(prevProps) {
-    if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.pathname = window.location.pathname
-      this.props.getData(this.pathname);
+    const { getData, match } = this.props;
+    if (match.params.id !== prevProps.match.params.id) {
+      this.pathname = window.location.pathname;
+      getData(this.pathname);
     }
   }
-  render(){
-    const { movie } = this.props
+
+  render() {
+    const { movie } = this.props;
     return (
       <div className={cx('wrapper')}>
         <div className={cx('leftBlock')}>
           <NameSite />
-        <img src={movie.poster_path} className={cx('poster')}/>
+          <img src={movie.poster_path} className={cx('poster')} alt="poster for film" />
         </div>
         <div className={cx('rightBlock')}>
-          <Link to={{ pathname: '/' }}><button className={cx('button')}>SEACRH</button></Link>
+          <Link to={{ pathname: '/' }}>
+            <button className={cx('button')} type="submit">SEACRH</button>
+          </Link>
           <div className={cx('description')}>{movie.overview}</div>
           <div className={cx('releaseDate')}>{movie.release_date}</div>
         </div>
-      </div>);
+      </div>
+    );
   }
 }
+BannerInformationFilm.propTypes = {
+  getData: PropTypes.func,
+  movie: PropTypes.object,
+  match: PropTypes.object,
+};
+
 const mapStateToProps = state => ({
-  movie: state.requestOneMovie
-})
+  movie: state.requestOneMovie,
+});
 
-const mapDispatchToProps = dispatch =>({
-  getData: pathname =>{
-      dispatch(getOneMovie(pathname))
-  }
-})
+const mapDispatchToProps = dispatch => ({
+  getData: pathname => {
+    dispatch(getOneMovie(pathname));
+  },
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(BannerInformationFilm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(BannerInformationFilm);

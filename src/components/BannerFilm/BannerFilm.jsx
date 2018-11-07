@@ -1,21 +1,19 @@
-import React, { Component, PureComponent } from 'react';
-import BannerInformationFilms from '../../components/BannerIformationFilms/BannerInfirmationFilm.jsx';
-import Footer from '../../components/footer/Footer.jsx';
-import PanelSorting from '../PanelSorting/PanelSorting.jsx';
-import PosterFilmWrapper from '../../components/PosterFilmWrapper/PosterFilmWrapper.jsx'
+import React, { PureComponent } from 'react';
+import BannerInformationFilms from '../BannerIformationFilms/BannerInfirmationFilm';
+import Footer from '../footer/Footer';
+import PanelSorting from '../PanelSorting/PanelSorting';
+import PosterFilmWrapper from '../PosterFilmWrapper/PosterFilmWrapper';
+
 class BannerFilm extends PureComponent {
-  constructor() {
-    super();
-  }
   render() {
-    return(
+    return (
       <>
-        <BannerInformationFilms { ...this.props}/>
+        <BannerInformationFilms {...this.props} />
         <PanelSorting />
         <PosterFilmWrapper />
         <Footer />
       </>
-    )
+    );
   }
 }
 

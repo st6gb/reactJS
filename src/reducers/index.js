@@ -8,5 +8,5 @@ export default combineReducers({
   active,
   request,
   sorting,
-  requestOneMovie
-})
+  requestOneMovie,
+});

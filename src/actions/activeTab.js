@@ -1,7 +1,6 @@
-export default function setActiveTab (title){
+export default function setActiveTab(title) {
   return {
-    type: "SET_ACTIVE",
-    active: title
-  }
+    type: 'SET_ACTIVE',
+    active: title,
+  };
 }
-

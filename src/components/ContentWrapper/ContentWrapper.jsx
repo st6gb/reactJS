@@ -1,22 +1,20 @@
-import React, { Component, PureComponent } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
-import styles from './ContentWrapper.scss'
+import PropTypes from 'prop-types';
+import styles from './ContentWrapper.scss';
 
 const cx = classNames.bind(styles);
 
-class ContentWrapper extends Component {
-  constructor() {
-    super();
-    
-  }
-  render() {
-    const { children } = this.props
-    return(
-      <div className={cx('contentWrapper')}>
+const ContentWrapper = (props) => {
+  const { children } = props;
+  return (
+    <div className={cx('contentWrapper')}>
       { children }
-      </div>
-    )
-  }
-}
+    </div>
+  );
+};
+ContentWrapper.propTypes = {
+  children: PropTypes.array,
+};
 
 export default ContentWrapper;
