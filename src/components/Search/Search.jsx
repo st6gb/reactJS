@@ -78,9 +78,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setActiveTab(title));
   },
 });
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Search),
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));
