@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import getOneMovie from '../../actions/getOneMovie';
 import NameSite from '../NameSite/NameSite';
 import styles from './BannerInfirmationFilm.scss';
+import { fetchFilmById } from '../../store/sagas';
 
 const cx = classNames.bind(styles);
 class BannerInformationFilm extends Component {
@@ -49,12 +49,12 @@ BannerInformationFilm.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  movie: state.requestOneMovie,
+  movie: state.filmsReduces.oneMovie,
 });
 
 const mapDispatchToProps = dispatch => ({
   getData: pathname => {
-    dispatch(getOneMovie(pathname));
+    dispatch(fetchFilmById(pathname));
   },
 });
 

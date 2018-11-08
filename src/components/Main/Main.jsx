@@ -6,8 +6,7 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import PanelSorting from '../PanelSorting/PanelSorting';
 import PosterFilmWrapper from '../PosterFilmWrapper/PosterFilmWrapper';
-
-import getFilm from '../../actions/getFilm';
+import { fetchFilms } from '../../store/sagas';
 
 class Main extends PureComponent {
   constructor() {
@@ -21,7 +20,7 @@ class Main extends PureComponent {
         window.location.search,
       );
       const { getData } = this.props;
-      getData(value, search, sortBy, sortOrder);
+      getData(sortBy, sortOrder, value, search);
     }
   }
 
@@ -31,7 +30,7 @@ class Main extends PureComponent {
       const { search, value, sortBy, sortOrder } = qs.parse(
         window.location.search,
       );
-      getData(value, search, sortBy, sortOrder);
+      getData(sortBy, sortOrder, value, search);
     }
   }
 
@@ -48,12 +47,12 @@ class Main extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  data: state.request,
+  data: state.filmsReduces.items,
   activeSort: state.sorting,
 });
 const mapDispatchToProps = dispatch => ({
   getData: (value, search, sortBy, sortOrder) => {
-    dispatch(getFilm(value, search, sortBy, sortOrder));
+    dispatch(fetchFilms(value, search, sortBy, sortOrder));
   },
 });
 Main.propTypes = {

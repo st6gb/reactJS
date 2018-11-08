@@ -12,7 +12,7 @@ const PanelSorting = (props) => {
   const { data, activeSort } = props;
   return (
     <div className={cx('panel')}>
-      <span>{`${data.length} film found`}</span>
+      <span>{`${data ? data.length : 0} film found`}</span>
       <div className={cx('box-sort')}>
         <span>Sort by</span>
         <button
@@ -53,7 +53,7 @@ PanelSorting.propTypes = {
   onClick: PropTypes.func,
 };
 const mapStateToProps = state => ({
-  data: state.request,
+  data: state.filmsReduces.items,
   activeSort: state.sorting,
 });
 const mapDispatchToProps = dispatch => ({
