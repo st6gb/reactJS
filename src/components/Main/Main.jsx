@@ -6,7 +6,7 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import PanelSorting from '../PanelSorting/PanelSorting';
 import PosterFilmWrapper from '../PosterFilmWrapper/PosterFilmWrapper';
-import { fetchFilms } from '../../store/sagas';
+import { fetchFilms } from '../../store/actions/fetchFilms';
 
 class Main extends PureComponent {
   constructor() {

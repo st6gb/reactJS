@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NameSite from '../NameSite/NameSite';
 import styles from './BannerInfirmationFilm.scss';
-import { fetchFilmById } from '../../store/sagas';
+import { fetchFilmById } from '../../store/actions/fetchFilmById';
 
 const cx = classNames.bind(styles);
 class BannerInformationFilm extends Component {

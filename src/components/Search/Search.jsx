@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import setActiveTab from '../../actions/activeTab';
+import setActiveTab from '../../store/actions/activeTab';
 import styles from './Search.scss';
 
 

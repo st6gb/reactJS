@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import sortBy from '../../actions/sortBy';
+import sortBy from '../../store/actions/sortBy';
 
 import styles from './PanelSorting.scss';
 
