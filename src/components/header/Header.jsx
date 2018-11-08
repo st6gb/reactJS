@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
 import NameSite from '../NameSite/NameSite';
-import Search from '../Search/Search';
+import Search from '../Search/Search'; // eslint-disable-line
 
 import styles from './header.scss';
 
