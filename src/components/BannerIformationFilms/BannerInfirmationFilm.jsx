@@ -29,14 +29,14 @@ class BannerInformationFilm extends Component {
       <div className={cx('wrapper')}>
         <div className={cx('leftBlock')}>
           <NameSite />
-          <img src={movie.poster_path} className={cx('poster')} alt="poster for film" />
+          {movie && <img src={movie.poster_path} className={cx('poster')} alt="poster for film" />}
         </div>
         <div className={cx('rightBlock')}>
           <Link to={{ pathname: '/' }}>
             <button className={cx('button')} type="submit">SEACRH</button>
           </Link>
-          <div className={cx('description')}>{movie.overview}</div>
-          <div className={cx('releaseDate')}>{movie.release_date}</div>
+          {movie && <div className={cx('description')}>{movie.overview}</div>}
+          {movie && <div className={cx('releaseDate')}>{movie.release_date}</div>}
         </div>
       </div>
     );
