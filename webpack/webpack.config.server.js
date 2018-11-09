@@ -1,9 +1,6 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const common = require('./webpack.config.common');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-const isDevMod = process.env.NODE_ENV === 'development';
 
 module.exports = merge(common, {
   name: 'server',
@@ -34,10 +31,10 @@ module.exports = merge(common, {
         use: [
           {
             loader: 'file-loader',
-            options: '[path][name].[ext]'
-          }
-        ]
-      }
+            options: '[path][name].[ext]',
+          },
+        ],
+      },
     ],
   },
 });

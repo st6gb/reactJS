@@ -1,11 +1,18 @@
 import './main.scss';
 import './images/favicon.ico';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { hydrate } from 'react-dom';
 import configureStore from './store/configureStore';
 import App from './App';
 
 const { persistor, store } = configureStore();
+const app = (
+  <App
+    Router={BrowserRouter}
+    store={store}
+    persistor={persistor}
+  />
+);
 
-
-ReactDOM.hydrate(<App store={store} persistor={persistor} />, document.getElementById('root'));
+hydrate(app, document.getElementById('root'));

@@ -31,10 +31,11 @@ module.exports = merge(common, {
             },
           },
           {
-            loader: "sass-loader", options: {
+            loader: 'sass-loader',
+            options: {
               modules: true,
-              localIdentName: '[name]-[hash:5]'
-            }
+              localIdentName: '[name]-[hash:5]',
+            },
           },
         ],
       },
@@ -43,10 +44,10 @@ module.exports = merge(common, {
         use: [
           {
             loader: 'file-loader',
-            options: '[path][name].[ext]'
-          }
-        ]
-      }
+            options: '[path][name].[ext]',
+          },
+        ],
+      },
     ],
   },
 
@@ -54,8 +55,8 @@ module.exports = merge(common, {
     !isDevMod && new CleanWebpackPlugin('./build', { root: path.resolve(__dirname, '../') }),
     isDevMod && new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-  }),
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
   ].filter(Boolean),
 });

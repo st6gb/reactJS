@@ -13,7 +13,11 @@ function renderHTML(html, preloadedState) {
             
             <title>(\\/)(>,..,<)(\\/)</title> 
             <link rel="shortcut icon" href="/favicon.ico"/>
-            ${process.env.NODE_ENV === 'development' ? '' : '<link href="/main.css" rel="stylesheet" type="text/css">'}
+            ${
+              process.env.NODE_ENV === 'development'
+                ? ''
+                : '<link href="/main.css" rel="stylesheet" type="text/css">'
+            }
             <link rel="icon" href="/favicon.ico" type="image/x-icon">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <style>
@@ -29,7 +33,10 @@ function renderHTML(html, preloadedState) {
             <script>
             // WARNING: See the following for security issues around embedding JSON in HTML:
             // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-            window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+            window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(
+              /</g,
+              '\\u003c'
+            )}
           </script>
           <script src="/src/main.js"></script>
         </body>
@@ -39,30 +46,30 @@ function renderHTML(html, preloadedState) {
 
 export default function serverRenderer() {
   return (req, res) => {
-    const store = configureStore();
+    
+    const { store } = configureStore();
+    
     // This context object contains the results of the render
     const context = {};
-
     const app = (
       <App
-        context={context} 
+        context={context}
         location={req.url}
         Router={StaticRouter}
         store={store}
       />
     );
-  /* eslint-enable */
-    const htmlString = renderToString(app);
-    // context.url will contain the URL to redirect to if a <Redirect> was used
-    if (context.url) {
-      res.writeHead(302, {
-        Location: context.url,
-      });
-      res.end();
-      return;
-    }
-    const preloadedState = store.store.getState();
+    /* eslint-enable */
+    store.runSaga().done.then(() => {
+      const htmlString = renderToString(app);
+      const preloadedState = store.getState();
 
-    res.send(renderHTML(htmlString, preloadedState));
+      res.send(renderHTML(htmlString, preloadedState));
+    });
+
+    // Do first render, starts initial actions.
+    renderToString(app);
+    // When the first render is finished, send the END action to redux-saga.
+    store.close();
   };
 }

@@ -9,11 +9,11 @@ import BannerFilm from './components/BannerFilm/BannerFilm';
 import NotFound from './components/NotFound/NotFound';
 
 const App = (props) => {
-  const { store, persistor } = props;
+  const { store, persistor, context, location } = props;
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+        <BrowserRouter location={location} context={context}>
           <Switch>
             <Route exact path="/" component={Main} />
             <Route path="/search" component={Main} />
@@ -29,6 +29,8 @@ const App = (props) => {
 App.propTypes = {
   store: PropTypes.object,
   persistor: PropTypes.object,
+  context: PropTypes.object,
+  location: PropTypes.object,
 };
 
 export default hot(module)(App);
