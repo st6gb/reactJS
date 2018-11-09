@@ -6,6 +6,7 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import PanelSorting from '../PanelSorting/PanelSorting';
 import PosterFilmWrapper from '../PosterFilmWrapper/PosterFilmWrapper';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import { fetchFilms } from '../../store/actions/fetchFilms';
 
 class Main extends PureComponent {
@@ -36,12 +37,12 @@ class Main extends PureComponent {
 
   render() {
     return (
-      <>
+      <ErrorBoundary>
         <Header />
         <PanelSorting />
         <PosterFilmWrapper />
         <Footer />
-      </>
+      </ErrorBoundary>
     );
   }
 }
