@@ -53,16 +53,23 @@ export default function serverRenderer() {
     const context = {};
     const app = (
       <App
+        store={store}
         context={context}
         location={req.url}
         Router={StaticRouter}
-        store={store}
       />
     );
     /* eslint-enable */
     store.runSaga().done.then(() => {
       const htmlString = renderToString(app);
       const preloadedState = store.getState();
+      if (context.url) {
+        res.writeHead(302, {
+          Location: context.url,
+        });
+        res.end();
+        return;
+      }
 
       res.send(renderHTML(htmlString, preloadedState));
     });

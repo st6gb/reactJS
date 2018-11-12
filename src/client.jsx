@@ -6,12 +6,11 @@ import { hydrate } from 'react-dom';
 import configureStore from './store/configureStore';
 import App from './App';
 
-const { persistor, store } = configureStore();
+const { store } = configureStore();
 const app = (
   <App
-    Router={BrowserRouter}
     store={store}
-    persistor={persistor}
+    Router={BrowserRouter}
   />
 );
 
