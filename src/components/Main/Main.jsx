@@ -10,9 +10,11 @@ import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import { fetchFilms } from '../../store/actions/fetchFilms';
 
 class Main extends PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
+    const { getData } = this.props;
+    getData();
   }
 
   componentDidMount() {

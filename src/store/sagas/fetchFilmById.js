@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { FETCH_FILMS_BY_ID } from '../constant_action';
 import { updateFilmById } from '../actions/fetchFilmById';

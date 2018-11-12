@@ -9,6 +9,13 @@ import { fetchFilmById } from '../../store/actions/fetchFilmById';
 
 const cx = classNames.bind(styles);
 class BannerInformationFilm extends Component {
+  constructor(props) {
+    super(props);
+    const { pathname } = this.props.location; //eslint-disable-line
+    const { getData } = this.props;
+    getData(pathname);
+  }
+
   componentDidMount() {
     this.pathname = window.location.pathname;
     const { getData } = this.props;

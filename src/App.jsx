@@ -1,3 +1,5 @@
+import 'isomorphic-fetch';
+import 'babel-polyfill';
 import React from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';

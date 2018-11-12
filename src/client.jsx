@@ -6,7 +6,7 @@ import { hydrate } from 'react-dom';
 import configureStore from './store/configureStore';
 import App from './App';
 
-const { store } = configureStore();
+const { store } = configureStore(window.PRELOADED_STATE);
 const app = (
   <App
     store={store}
