@@ -16,11 +16,12 @@ class BannerInformationFilm extends Component {
     getData(pathname);
   }
 
-  componentDidMount() {
-    this.pathname = window.location.pathname;
-    const { getData } = this.props;
-    getData(this.pathname);
-  }
+  // componentDidMount() {
+  //   console.log(this.props);
+  //   this.pathname = window.location.pathname;
+  //   const { getData } = this.props;
+  //   getData(this.pathname);
+  // }
 
   componentDidUpdate(prevProps) {
     const { getData, match } = this.props;
