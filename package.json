@@ -7,7 +7,9 @@
     "start": "cross-env NODE_ENV=development  node ./server",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack",
     "prod": "cross-env NODE_ENV=production  node ./server",
-    "lint": "eslint --debug src/"
+    "lint": "eslint --debug src/",
+    "test": "jest --coverage",
+    "jest": "jest"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,7 @@ import ConnectedSearch, { Search } from '../src/components/Search/Search';
 import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import setActiveTab from '../src/actions/activeTab';
+import setActiveTab from '../src/store/actions/activeTab';
 
 describe('component', () => {
   it("search",()=>{
