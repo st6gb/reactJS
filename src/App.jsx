@@ -8,6 +8,7 @@ import { hot } from 'react-hot-loader';
 import Main from './components/Main/Main';
 import BannerFilm from './components/BannerFilm/BannerFilm';
 import NotFound from './components/NotFound/NotFound';
+import PictureDogs from './components/PictureDogs/PictureDogs';
 
 
 const App = (props) => {
@@ -19,6 +20,7 @@ const App = (props) => {
           <Route exact path="/" component={Main} />
           <Route path="/search" component={Main} />
           <Route path="/movies/:id(\d+)" component={BannerFilm} />
+          <Route path="/easter-egg" component={PictureDogs} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
@@ -31,7 +33,7 @@ App.propTypes = {
   store: PropTypes.object,
   persistor: PropTypes.object,
   context: PropTypes.object,
-  location: PropTypes.object,
+  location: PropTypes.string,
 };
 
 export default hot(module)(App);
