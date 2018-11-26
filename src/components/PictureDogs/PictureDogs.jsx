@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { ClipLoader } from 'react-spinners';
 
 class PictureDogs extends Component {
   constructor(props) {
     super(props);
-    this.state = { status: false, message: null };
+    this.state = { status: true, message: null };
   }
 
   componentDidMount() {
@@ -19,7 +20,7 @@ class PictureDogs extends Component {
   render() {
     const { status, message } = this.state;
     return (
-      status === 'success' ? <img src={message} alt="dog" /> : <div>load dog</div>
+      status === 'success' ? <img src={message} alt="dog" /> : <ClipLoader sizeUnit="px" size={150} color="#123abc" loading={status} />
     );
   }
 }
